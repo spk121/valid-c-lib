@@ -1,5 +1,4 @@
 #ifndef _LIMITS_H
-#include <limits.h>
 #define _LIMITS_H
 #define CHAR_BIT 8
 #define CHAR_MAX 127
