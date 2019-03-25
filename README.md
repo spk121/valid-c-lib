@@ -6,7 +6,7 @@ For anyone that has coded in C has used a vendor's C library, but, that C librar
 This project has three main parts:
 1. A port of the Red Hat Newlib C library which has been reduced to contain only the functions required by the C Standard.
 2. Some libraries, written in valid C, that provide functionality usually contained in standard C libraries.
-3. Standard Unix tools modified to only valid C.
+3. Some standard UNIX-like tools modified to use only valid C.
 
 ## Porting to Valid C
 
