@@ -4,10 +4,10 @@ This project is a personal challenge to see what one can do using only valid C -
 For anyone that has coded in C, the library that came with your compiler probably felt pretty limited already.  There isn't a huge amount of functionality provided in GNU Libc, or Windows's UCRT, or Red Hat's Newlib.  But all of these libraries have far greater functionality that the C standard requires.  The valid C library is extremely minimal.
 
 This project, as concieved in my head, has four main parts:
-1. A modification to the Musl C library which can reduce it to contain only the functions required by the C Standard.
-2. Libraries written only in valid C that provide the common functions and constructs.
-3. UNIX-like tools modified to use only valid C and the libraries provided by this project.
-4. Strategies for common operating systems to gather a toolchain that can compile valid C.
+1. A modification to the Musl C library which can reduce it to contain only the functions required by the C Standard
+2. Libraries written only in valid C that provide common functions and constructs
+3. UNIX-like tools modified to use only valid C and the libraries provided by this project
+4. Strategies for common operating systems to gather a toolchain that can compile valid C
 
 ## Porting to Valid C
 
