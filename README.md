@@ -14,23 +14,24 @@ This project, as concieved in my head, has four main parts:
 Theoretically, a program in valid C is portable to every platform with a C compiler, so if a program is constrained to use only valid C, it should be able to be compiled and run anywhere.  However, if you actually wanted to try to port a C program to strictly valid C, you would have to remove most of the hardware and OS interactions.
 
 The OS functionality of the official C library is limited to
-* Stream-based I/O such as fopen and fprintf
-* getenv / setenv
+* Stream-based I/O such as `fopen` and `fprintf`
+* `getenv` / `setenv`
 * The `system` function
 * C (not posix) threads
 * `signal` and `raise`
 
-Existing C programs are very likely to use more OS functionality that the official C library provides.  Notably, in valid C there are no concept of some very common operating system constructs like
+Existing C programs are very likely to use more OS functionality that the official C library provides.  Notably, in valid C there is no concept of some very common operating system constructs like
 - directories
 - sockets
 - POSIX threads
 - querying file info with `stat`
 - timers
-- fork and exec
+- `fork` and `exec`
+- dynamically loadable libraries
 
 ### Splitting Portable and Unportable layers
 
-Since porting to strictly valid C is not an option for most programs, you could use some of the tools and techniquest in this project to help split a program into portable and unportable modules.  If the main core of your program only used valid C headers and extended functionality was pushed into separate libraries, it might be easier to comparmentalize any OS-specific `#ifdef` code.
+Since porting to strictly valid C is not an option for most programs, you could use some of the tools and techniques in this project to help split a program into portable and unportable modules.  If the main core of your program only used valid C headers and extended functionality was pushed into separate modules, it should be easier to comparmentalize any OS-specific `#ifdef` code.
 
 ## Colophon
 
