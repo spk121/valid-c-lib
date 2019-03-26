@@ -1,29 +1,36 @@
 # valid-c-lib
 This project is a personal challenge to see what one can do using only valid C -- the C language as described in the C standard.
 
-For anyone that has coded in C has used a vendor's C library, but, that C library likely has far greater functionality that the C standard requires.  The valid C library is quite minimal.
+For anyone that has coded in C, the library that came with your compiler probably felt pretty limited already.  There isn't a huge amount of functionality provided in GNU Libc, or Windows's UCRT, or Red Hat's Newlib.  But all of these libraries have far greater functionality that the C standard requires.  The valid C library is extremely minimal.
 
-This project has three main parts:
-1. A port of the Red Hat Newlib C library which has been reduced to contain only the functions required by the C Standard.
-2. Some libraries, written in valid C, that provide functionality usually contained in standard C libraries.
-3. Some standard UNIX-like tools modified to use only valid C.
+This project, as concieved in my head, has four main parts:
+1. A modification to the Musl C library which can reduce it to contain only the functions required by the C Standard.
+2. Libraries written only in valid C that provide the common functions and constructs.
+3. UNIX-like tools modified to use only valid C and the libraries provided by this project.
+4. Strategies for common operating systems to gather a toolchain that can compile valid C.
 
 ## Porting to Valid C
 
-If you actually wanted to try to port a C program to strictly valid C, you would have to remove most of the hardware and OS interactions.
+Theoretically, a program in valid C is portable to every platform with a C compiler, so if a program is constrained to use only valid C, it should be able to be compiled and run anywhere.  However, if you actually wanted to try to port a C program to strictly valid C, you would have to remove most of the hardware and OS interactions.
 
 The OS functionality of the official C library is limited to
-* FILE-base I/O
+* Stream-based I/O such as fopen and fprintf
 * getenv / setenv
 * The `system` function
 * C (not posix) threads
 * `signal` and `raise`
 
-Thus, most existing programs use more OS functionality that the official C library provides.
+Existing C programs are very likely to use more OS functionality that the official C library provides.  Notably, in valid C there are no concept of some very common operating system constructs like
+- directories
+- sockets
+- POSIX threads
+- querying file info with `stat`
+- timers
+- fork and exec
 
-## Splitting Portable and Unportable layers
+### Splitting Portable and Unportable layers
 
-Since porting to strictly valid C is not an option for most programs, you could use these headers to help split a program into portable and unportable modules.  If the main core of your program only used valid C headers and extended functionality was pushed into separate libraries, it might be easier to comparmentalize any OS-specific `#ifdef` code.
+Since porting to strictly valid C is not an option for most programs, you could use some of the tools and techniquest in this project to help split a program into portable and unportable modules.  If the main core of your program only used valid C headers and extended functionality was pushed into separate libraries, it might be easier to comparmentalize any OS-specific `#ifdef` code.
 
 ## Colophon
 
