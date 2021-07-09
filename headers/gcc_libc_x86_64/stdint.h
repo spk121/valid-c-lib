@@ -55,7 +55,7 @@ typedef long int intptr_t;
 
 typedef unsigned long int uintptr_t;
 typedef __intmax_t intmax_t;
-typedef __uintmax_t uintmax;
+typedef __uintmax_t uintmax_t;
 
 #define INT8_MIN (-128)
 #define INT16_MIN (-32767-1)
